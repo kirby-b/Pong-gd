@@ -1,10 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvusmwkbdafo4"]
+[gd_scene load_steps=6 format=3 uid="uid://cvusmwkbdafo4"]
 
 [ext_resource type="PackedScene" uid="uid://cxalb153q1akk" path="res://Scenes/paddle.tscn" id="1_tx61k"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_vx1ui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4a8us"]
+size = Vector2(40, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yx5m8"]
+size = Vector2(32, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lm5x"]
+size = Vector2(1224, 16)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vx1ui")
 
 [node name="Paddle" parent="." instance=ExtResource("1_tx61k")]
 position = Vector2(64, 320)
+
+[node name="LeftOutZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftOutZone"]
+position = Vector2(20, 360)
+shape = SubResource("RectangleShape2D_4a8us")
+
+[node name="RightOutZone" type="Area2D" parent="."]
+position = Vector2(1280, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightOutZone"]
+position = Vector2(-16, 360)
+shape = SubResource("RectangleShape2D_yx5m8")
+
+[node name="Bottom" type="StaticBody2D" parent="."]
+position = Vector2(40, 720)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(604, 8)
+shape = SubResource("RectangleShape2D_6lm5x")
+
+[node name="Top" type="StaticBody2D" parent="."]
+position = Vector2(40, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2(604, -8)
+shape = SubResource("RectangleShape2D_6lm5x")

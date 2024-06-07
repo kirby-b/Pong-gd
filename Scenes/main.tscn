@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvusmwkbdafo4"]
+[gd_scene load_steps=8 format=3 uid="uid://cvusmwkbdafo4"]
 
 [ext_resource type="PackedScene" uid="uid://cxalb153q1akk" path="res://Scenes/paddle.tscn" id="1_tx61k"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_vx1ui"]
+[ext_resource type="PackedScene" uid="uid://3w1r3r4djl4m" path="res://Scenes/enemy_paddle.tscn" id="3_unjpr"]
+[ext_resource type="PackedScene" uid="uid://cj5eu5qyf20vw" path="res://Scenes/ball.tscn" id="4_5x3yf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4a8us"]
 size = Vector2(40, 720)
@@ -15,32 +17,40 @@ size = Vector2(1224, 16)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vx1ui")
 
-[node name="Paddle" parent="." instance=ExtResource("1_tx61k")]
-position = Vector2(64, 320)
+[node name="Boundaries" type="Node" parent="."]
 
-[node name="LeftOutZone" type="Area2D" parent="."]
+[node name="LeftOutZone" type="Area2D" parent="Boundaries"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftOutZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/LeftOutZone"]
 position = Vector2(20, 360)
 shape = SubResource("RectangleShape2D_4a8us")
 
-[node name="RightOutZone" type="Area2D" parent="."]
+[node name="RightOutZone" type="Area2D" parent="Boundaries"]
 position = Vector2(1280, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightOutZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/RightOutZone"]
 position = Vector2(-16, 360)
 shape = SubResource("RectangleShape2D_yx5m8")
 
-[node name="Bottom" type="StaticBody2D" parent="."]
+[node name="Bottom" type="StaticBody2D" parent="Boundaries"]
 position = Vector2(40, 720)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Bottom"]
 position = Vector2(604, 8)
 shape = SubResource("RectangleShape2D_6lm5x")
 
-[node name="Top" type="StaticBody2D" parent="."]
+[node name="Top" type="StaticBody2D" parent="Boundaries"]
 position = Vector2(40, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Top"]
 position = Vector2(604, -8)
 shape = SubResource("RectangleShape2D_6lm5x")
+
+[node name="Paddle" parent="." instance=ExtResource("1_tx61k")]
+position = Vector2(64, 320)
+
+[node name="EnemyPaddle" parent="." instance=ExtResource("3_unjpr")]
+position = Vector2(1216, 320)
+
+[node name="Ball" parent="." instance=ExtResource("4_5x3yf")]
+position = Vector2(640, 320)

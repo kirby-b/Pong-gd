@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj5eu5qyf20vw"]
+[gd_scene load_steps=4 format=3 uid="uid://cj5eu5qyf20vw"]
 
 [ext_resource type="Texture2D" uid="uid://b0761dtnf0wxx" path="res://Resources/pong.png" id="1_078sl"]
+[ext_resource type="Script" path="res://Scripts/ball.cs" id="1_skm88"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la483"]
 size = Vector2(4, 4)
 
 [node name="Ball" type="CharacterBody2D"]
 scale = Vector2(3, 3)
+script = ExtResource("1_skm88")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

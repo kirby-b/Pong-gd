@@ -54,3 +54,8 @@ position = Vector2(1216, 320)
 
 [node name="Ball" parent="." instance=ExtResource("4_5x3yf")]
 position = Vector2(640, 320)
+
+[node name="BounceTime" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="BounceTime" to="Ball" method="OnBounceTimeTimeout"]

@@ -47,15 +47,22 @@ position = Vector2(604, -8)
 shape = SubResource("RectangleShape2D_6lm5x")
 
 [node name="Paddle" parent="." instance=ExtResource("1_tx61k")]
-position = Vector2(64, 320)
+position = Vector2(72, 360)
 
 [node name="EnemyPaddle" parent="." instance=ExtResource("3_unjpr")]
-position = Vector2(1216, 320)
+position = Vector2(1216, 360)
 
 [node name="Ball" parent="." instance=ExtResource("4_5x3yf")]
-position = Vector2(640, 320)
+position = Vector2(640, 360)
 
 [node name="BounceTime" type="Timer" parent="."]
+wait_time = 0.05
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1500
+limit_bottom = 1000
 
 [connection signal="timeout" from="BounceTime" to="Ball" method="OnBounceTimeTimeout"]

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics.Tracing;
 using System.Security.Cryptography.X509Certificates;
 
 public partial class ball : CharacterBody2D
@@ -16,10 +17,16 @@ public partial class ball : CharacterBody2D
 
 	Timer bounce = null;
 
+	Timer spawn_wait = null;
+
+	Vector2 spawn;
+
     public override void _Ready()
     {
         base._Ready();
 		bounce = GetNode<Timer>("../BounceTime");
+		spawn_wait = GetNode<Timer>("../SpawnWait");
+		spawn = Position;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -58,7 +65,19 @@ public partial class ball : CharacterBody2D
 		// Control if they will bounce up(1), down(-1), or continue at current angle(0)
 	}
 
+	public void Respawn(){
+		Horizonal_Speed = 0.0f;
+		Vertical_Speed = 0.0f;
+		Position = spawn;
+		spawn_wait.Start();
+	}
+
 	public void OnBounceTimeTimeout(){
 		can_bounce = true;
+	}
+
+	public void OnSpawnWaitTimeout(){
+		Horizonal_Speed = 300.0f;
+		direction *= -1;
 	}
 }

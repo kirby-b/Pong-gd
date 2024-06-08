@@ -69,9 +69,3 @@ wait_time = 0.05
 one_shot = true
 
 [node name="SpawnWait" type="Timer" parent="."]
-one_shot = true
-
-[connection signal="body_entered" from="Boundaries/LeftOutZone" to="Boundaries/LeftOutZone" method="OnBodyEntered"]
-[connection signal="body_entered" from="Boundaries/RightOutZone" to="Boundaries/RightOutZone" method="OnBodyEntered"]
-[connection signal="timeout" from="BounceTime" to="Ball" method="OnBounceTimeTimeout"]
-[connection signal="timeout" from="SpawnWait" to="Ball" method="OnSpawnWaitTimeout"]

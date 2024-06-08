@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Security.Cryptography.X509Certificates;
 
-public partial class paddle : CharacterBody2D
+public partial class enemy_paddle : CharacterBody2D
 {
 	public const float Speed = 350.0f;
     public override void _PhysicsProcess(double delta)
@@ -27,12 +27,12 @@ public partial class paddle : CharacterBody2D
 
 	public void OnTopEntered(Node2D body){
 		if (body is ball Ball){
-			Ball.SetVertical(1);
+			Ball.SetVertical(-1);
 		}
 	}
 	public void OnBottomEntered(Node2D body){
 		if (body is ball Ball){
-			Ball.SetVertical(-1);
+			Ball.SetVertical(1);
 		}
 	}
 	public void OnBodyExit(Node2D body){

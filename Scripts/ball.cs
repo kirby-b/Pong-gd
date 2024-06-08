@@ -4,7 +4,12 @@ using System.Security.Cryptography.X509Certificates;
 
 public partial class ball : CharacterBody2D
 {
-	public const float Speed = 300.0f;
+	public float Horizonal_Speed = 300.0f;
+
+	public float Vertical_Speed = 0.0f;
+
+	public int UpOrDown = 0;
+
 	public int direction = 1;
 
 	public bool can_bounce = true;
@@ -24,16 +29,33 @@ public partial class ball : CharacterBody2D
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 
-		velocity.X = direction * Speed;
+		velocity.X = direction * Horizonal_Speed;
+		velocity.Y = direction * Vertical_Speed;
 
 		if(IsOnWall() && can_bounce){
 			direction *= -1;
+			if (UpOrDown == 1){
+				Vertical_Speed = -300;
+			}
+			else if(UpOrDown == -1){
+				Vertical_Speed = 300;
+			}
+			bounce.Start();
+			can_bounce = false;
+		}
+		if((IsOnFloor() || IsOnCeiling()) && can_bounce){
+			Vertical_Speed *= -1;
 			bounce.Start();
 			can_bounce = false;
 		}
 
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	public void SetVertical(int new_direction){
+		UpOrDown = new_direction;
+		// Control if they will bounce up(1), down(-1), or continue at current angle(0)
 	}
 
 	public void OnBounceTimeTimeout(){

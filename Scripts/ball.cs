@@ -41,6 +41,7 @@ public partial class ball : CharacterBody2D
 
 		if(IsOnWall() && can_bounce){
 			direction *= -1;
+			Horizonal_Speed *= 1.1f;
 			if (UpOrDown == 1){
 				Vertical_Speed = -300;
 			}

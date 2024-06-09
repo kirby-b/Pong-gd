@@ -27,7 +27,6 @@ public partial class ball : CharacterBody2D
 		bounce = GetNode<Timer>("../BounceTime");
 		spawn_wait = GetNode<Timer>("../SpawnWait");
 		spawn = Position;
-		enemy_paddle.GetBallPos(GlobalPosition);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -39,8 +38,6 @@ public partial class ball : CharacterBody2D
 
 		velocity.X = direction * Horizonal_Speed;
 		velocity.Y = direction * Vertical_Speed;
-
-		enemy_paddle.GetBallPos(GlobalPosition);
 
 		if(IsOnWall() && can_bounce){
 			direction *= -1;

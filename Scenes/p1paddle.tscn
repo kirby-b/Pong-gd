@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxalb153q1akk"]
 
 [ext_resource type="Texture2D" uid="uid://b0761dtnf0wxx" path="res://Resources/pong.png" id="1_iv40h"]
-[ext_resource type="Script" path="res://Scripts/paddle.cs" id="1_oab68"]
+[ext_resource type="Script" path="res://Scripts/p1paddle.cs" id="1_l31v0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la483"]
 size = Vector2(32, 6)
@@ -12,7 +12,7 @@ size = Vector2(10.6667, 2.66667)
 [node name="Paddle" type="CharacterBody2D"]
 rotation = -1.5708
 scale = Vector2(3.5, 3.5)
-script = ExtResource("1_oab68")
+script = ExtResource("1_l31v0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

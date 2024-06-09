@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://cvusmwkbdafo4"]
 
-[ext_resource type="PackedScene" uid="uid://cxalb153q1akk" path="res://Scenes/paddle.tscn" id="1_tx61k"]
+[ext_resource type="PackedScene" uid="uid://cxalb153q1akk" path="res://Scenes/p1paddle.tscn" id="1_tx61k"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_vx1ui"]
 [ext_resource type="Script" path="res://Scripts/LeftOutZone.cs" id="2_tbpt2"]
 [ext_resource type="Script" path="res://Scripts/RightOutZone.cs" id="3_65ljk"]
-[ext_resource type="PackedScene" uid="uid://3w1r3r4djl4m" path="res://Scenes/enemy_paddle.tscn" id="3_unjpr"]
+[ext_resource type="PackedScene" uid="uid://3w1r3r4djl4m" path="res://Scenes/p2paddle.tscn" id="3_unjpr"]
 [ext_resource type="PackedScene" uid="uid://cj5eu5qyf20vw" path="res://Scenes/ball.tscn" id="4_5x3yf"]
 [ext_resource type="PackedScene" uid="uid://dkgmluuuwar3p" path="res://Scenes/ui.tscn" id="6_tdo2x"]
 

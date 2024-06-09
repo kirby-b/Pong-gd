@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Security.Cryptography.X509Certificates;
 
-public partial class paddle : CharacterBody2D
+public partial class p2paddle : CharacterBody2D
 {
 	public const float Speed = 350.0f;
     public override void _PhysicsProcess(double delta)

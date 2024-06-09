@@ -8,7 +8,7 @@ public partial class RightOutZone : Area2D
 	public void OnBodyEntered(Node2D body){
 		if (body is ball Ball){
 			Ball.Respawn();
-			UI.Call("right_up");
+			UI.Call("left_up");
 		}
 	}
 }

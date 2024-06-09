@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var left = $LeftScore
 @onready var right = $RightScore
+@onready var win_window = $ConfirmationDialog
 
 static var lcurrent = 0
 static var rcurrent = 0
@@ -14,16 +15,28 @@ func _ready():
 	
 func _process(_delta):
 	if lcurrent == 9:
-		pass
+		get_tree().paused = true
+		win_window.title = "Player Wins!"
+		win_window.visible = true
 	if rcurrent == 9:
-		pass
+		get_tree().paused = true
+		win_window.title = "Computer Wins!"
+		win_window.visible = true
 	left.frame = lcurrent
 	right.frame = rcurrent
 
 static func left_up():
 	lcurrent += 1
-	print("Left Score")
 
 static func right_up():
 	rcurrent += 1
-	print("Right Score")
+
+func _on_confirmation_dialog_confirmed():
+	get_tree().paused = false
+	win_window.visible = false
+	get_tree().reload_current_scene()
+	
+
+func _on_confirmation_dialog_canceled():
+	win_window.visible = false
+	get_tree().quit()

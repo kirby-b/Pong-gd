@@ -160,6 +160,7 @@ animations = [{
 }]
 
 [node name="UI" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_6tkly")
 
 [node name="LeftScore" type="AnimatedSprite2D" parent="."]
@@ -175,3 +176,12 @@ position = Vector2(1152, 32)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ylgg5")
 animation = &"nums"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+initial_position = 1
+size = Vector2i(300, 150)
+ok_button_text = "Continue"
+cancel_button_text = "Quit"
+
+[connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

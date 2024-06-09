@@ -4,14 +4,16 @@ using System.Security.Cryptography.X509Certificates;
 
 public partial class enemy_paddle : CharacterBody2D
 {
-	public const float Speed = 350.0f;
+	public const float Speed = 700.0f;
+
+	static Vector2 ballPos;
     public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		Vector2 direction = (ballPos - GlobalPosition).Normalized();
 		if (direction != Vector2.Zero)
 		{
 			velocity.Y = direction.Y * Speed;
@@ -23,6 +25,10 @@ public partial class enemy_paddle : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	public static void GetBallPos(Vector2 pos){
+		ballPos = pos;
 	}
 
 	public void OnTopEntered(Node2D body){

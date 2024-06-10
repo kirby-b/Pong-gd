@@ -3,20 +3,20 @@ using System;
 using System.Diagnostics.Tracing;
 using System.Security.Cryptography.X509Certificates;
 
+// This class controls all the ball functionality
 public partial class ball : CharacterBody2D
 {
+	// Variables for the balls movement speed
 	public float Horizonal_Speed = 300.0f;
-
 	public float Vertical_Speed = 0.0f;
-
+	// Determines if the ball will bounce up or down
 	public int UpOrDown = 0;
-
+	// Determines the balls direction
 	public int direction = 1;
-
+	// Determines if the ball can bounce
 	public bool can_bounce = true;
-
 	Timer bounce = null;
-
+	// A timer for respawn so its not immediate
 	Timer spawn_wait = null;
 
 	Vector2 spawn;
@@ -24,6 +24,7 @@ public partial class ball : CharacterBody2D
     public override void _Ready()
     {
         base._Ready();
+		// All of this is instancing the timers and storing the initial spawn location
 		bounce = GetNode<Timer>("../BounceTime");
 		spawn_wait = GetNode<Timer>("../SpawnWait");
 		spawn = Position;
@@ -33,12 +34,11 @@ public partial class ball : CharacterBody2D
 	{
 		Vector2 velocity = Velocity;
 
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-
+		// Controls the balls movement
 		velocity.X = direction * Horizonal_Speed;
 		velocity.Y = direction * Vertical_Speed;
 
+		// Bounces ball if it hits a wall or ceiling
 		if(IsOnWall() && can_bounce){
 			direction *= -1;
 			Horizonal_Speed *= 1.1f;
@@ -66,6 +66,7 @@ public partial class ball : CharacterBody2D
 		// Control if they will bounce up(1), down(-1), or continue at current angle(0)
 	}
 
+	// Respawns the ball
 	public void Respawn(){
 		Horizonal_Speed = 0.0f;
 		Vertical_Speed = 0.0f;
@@ -73,6 +74,7 @@ public partial class ball : CharacterBody2D
 		spawn_wait.Start();
 	}
 
+	// Timer timeouts to make the program continue
 	public void OnBounceTimeTimeout(){
 		can_bounce = true;
 	}

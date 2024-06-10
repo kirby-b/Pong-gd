@@ -11,12 +11,12 @@ public partial class enemy_paddle : CharacterBody2D
 	{
 		Vector2 velocity = Velocity;
 
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
+		// Gets the balls position and subtracts your position
 		Vector2 direction = (ballPos - GlobalPosition).Normalized();
 		if (direction != Vector2.Zero)
 		{
-			velocity.Y = direction.Y * Speed;
+			// Attemps to center on the balls Y
+			velocity.Y = direction.Y * Speed; 
 		}
 		else
 		{
@@ -31,18 +31,22 @@ public partial class enemy_paddle : CharacterBody2D
 		ballPos = pos;
 	}
 
+	// Controls what happens when the ball hits the zones or leaves them
 	public void OnTopEntered(Node2D body){
 		if (body is ball Ball){
+			// Sends the ball up
 			Ball.SetVertical(-1);
 		}
 	}
 	public void OnBottomEntered(Node2D body){
 		if (body is ball Ball){
+			// Sends the ball down
 			Ball.SetVertical(1);
 		}
 	}
 	public void OnBodyExit(Node2D body){
 		if (body is ball Ball){
+			// Sends the ball on its normal path
 			Ball.SetVertical(0);
 		}
 	}

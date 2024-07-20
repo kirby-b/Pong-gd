@@ -16,11 +16,11 @@ func _ready():
 func _process(_delta):
 	if lcurrent == 9:
 		get_tree().paused = true
-		win_window.title = "Player Wins!"
+		win_window.title = "Player 1 Wins!"
 		win_window.visible = true
 	if rcurrent == 9:
 		get_tree().paused = true
-		win_window.title = "Computer Wins!"
+		win_window.title = "Player 2 Wins!"
 		win_window.visible = true
 	left.frame = lcurrent
 	right.frame = rcurrent

@@ -1,5 +1,7 @@
 # Pong GD
 
-This was a small project to learn how to use c# in Godot. It has taught me a lot, especially the correct used of c# with godot. Using C# for almost everything in this project was a nightmare. 
-C# for godot only really works for math behind the scenes, and even then it can be annoying. The hardest part of this project was making the enemy computer paddle follow the balls Y of all things 
-and I still am not happy with how it works, so I chose to make both paddles players(one with WASD, the other with arrow keys)
+This was a small project to learn how to use c# in Godot. It has taught me a lot, especially the correct used of c# with godot. Dont get me wrong; C# works fine as a controller for basic stuff like this. But 
+GDScript works better in a lot of ways. This isnt Godot or C#'s fault and it ultimatly comes down to one thing: GDScript is made for godot and C# is just supported. This means that gd will always work better 
+for actually working with the engine, which is why a lot of people mainly use C# for math and heavy calculations that run slower with GDScript. 
+
+In conclusion, both are acceptable languages, both are valueable to learn, and you shouldnt choose just one of these languages to use(this applys to a lot of things actually)

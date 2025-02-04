@@ -1,7 +1,5 @@
 using Godot;
 using System;
-using System.Diagnostics.Tracing;
-using System.Security.Cryptography.X509Certificates;
 
 // This class controls all the ball functionality
 public partial class ball : CharacterBody2D
